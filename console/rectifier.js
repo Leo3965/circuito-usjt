@@ -34,18 +34,18 @@ const getMediumVoltage = function (vmax, vmin) {
 
 // Variáveis de entrada
 
-const v1 = 200; // V Tensão Primário
-const n1 = 1000; // V
-const n2 = 200; // V
+const v1 = 200; // V Tensão Eficaz No Primário
+const n1 = 1000; //
+const n2 = 200; //
 const dType = 'silicio'; // Tipo dos diodos
 const d1 = getDiodeType(dType); // V
 const d2 = getDiodeType(dType); // V
 const rl = 4000; // Ohms
 const f1 = 60; //Hz Frequência do primário
-const f2 = 2 * f1; //Hz Frequência do secundário
 const c = 100/1_000_000 // F
 
 // Variáveis de saída
+const f2 = 2 * f1; //Hz Frequência do secundário
 const v2 = getSecondaryVoltage(v1, n1, n2); // V Tensão Eficaz Secundário
 const v2Peak = getSecondaryPeakVoltage(v2); // V Tensão de pico no secundário
 const vcp = getCapacitorPeakVoltage(v2Peak, d1); // V Tensão de pico no capacitor
