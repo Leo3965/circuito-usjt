@@ -91,7 +91,8 @@ export default defineComponent({
           Number(rectifierInputs[6].value),
       );
 
-      console.log(this.halfWaveResult);
+      const result = this.halfWaveResult.calcRectifier();
+      console.log(result);
     },
     handleClear() {
       const rectifierInputs = this.getInputs();

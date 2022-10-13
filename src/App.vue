@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import BarraLateral from '@/components/BarraLateral.vue'
 import Header from "@/components/Header.vue";
 import Hero from "@/components/Hero.vue";
 import Circuit from "@/components/Circuit.vue";
@@ -26,8 +25,7 @@ export default defineComponent({
     Testimonials,
     Hero,
     Circuit,
-    Header,
-    BarraLateral
+    Header
   },
 });
 </script>

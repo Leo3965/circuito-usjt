@@ -1,9 +1,7 @@
 import {createApp} from 'vue'
 import App from './App.vue'
-import roteador from "@/roteador";
-import {key, store} from "@/store";
+import router from "@/router";
 
 createApp(App)
-    .use(roteador)
-    .use(store, key)
+    .use(router)
     .mount('#app')

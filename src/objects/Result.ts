@@ -1,10 +1,14 @@
 export class Value {
     property: string;
     value: string;
+    description: string;
+    unit: string
 
-    constructor(property: string, value: string) {
+    constructor(property: string, value: string, description: string, unit: string) {
         this.property = property;
         this.value = value;
+        this.description = description;
+        this.unit = unit;
     }
 }
 

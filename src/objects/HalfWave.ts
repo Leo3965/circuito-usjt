@@ -1,3 +1,5 @@
+import Result, {Value} from "@/objects/Result";
+
 export enum Diode {
     silicon = 0.7,
     bronio = 0.3
@@ -24,7 +26,7 @@ export default class HalfWave {
         }
         this.rl = rl;
         this.f1 = f1;
-        this.c = c;
+        this.c = c / 1_000_000;
     }
 
     // 1# STEP: Determinar tensão eficaz no secundário
@@ -52,18 +54,29 @@ export default class HalfWave {
         return (vmax + vmin) / 2;
     }
 
-    calcRectifier() {
-        const f2 = 2 * this.f1; //Hz Frequência do secundário
-        const v2 = this.getSecondaryVoltage(); // V Tensão Eficaz Secundário
-        const v2Peak = this.getSecondaryPeakVoltage(v2); // V Tensão de pico no secundário
-        const vcp = this.getCapacitorPeakVoltage(v2Peak, this.diode); // V Tensão de pico no capacitor
-        const vrl = vcp; // V
-        const von = this.getRippleVoltage(vrl, f2); // V Tensão Ripple
-        const vmax = vrl; // V
-        const vmin = vrl - von; // V
-        const vmed = this.getMediumVoltage(vmax, vmin); // V Tensão Média
+    calcRectifier(): Result {
+        const f2 = 2 * this.f1;
+        const v2 = this.getSecondaryVoltage();
+        const v2Peak = this.getSecondaryPeakVoltage(v2);
+        const vcp = this.getCapacitorPeakVoltage(v2Peak, this.diode);
+        const vrl = vcp;
+        const von = this.getRippleVoltage(vrl, f2);
+        const vmax = vrl;
+        const vmin = vrl - von;
+        const vmed = this.getMediumVoltage(vmax, vmin);
 
         // Montando retorno
+        const result = new Result();
+        result.addValue(new Value('f2', String(f2), 'Frequência do secundário', 'Hz'));
+        result.addValue(new Value('v2', String(v2), 'Tensão Eficaz no secundário', 'V'));
+        result.addValue(new Value('v2Peak', String(v2Peak), 'Tensão de pico no secundário', 'V'));
+        result.addValue(new Value('vcp', String(vcp), 'Tensão de pico no capacitor', 'V'));
+        result.addValue(new Value('von', String(von), 'Tensão Ripple', 'V'));
+        result.addValue(new Value('vmáx', String(vmax), 'Tensão Máxima', 'V'));
+        result.addValue(new Value('vmín', String(vmin), 'Tensão Mínima', 'V'));
+        result.addValue(new Value('vméd', String(vmed), 'Tensão Média', 'V'));
+
+        return result;
     }
 
 }
