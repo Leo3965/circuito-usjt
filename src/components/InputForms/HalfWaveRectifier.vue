@@ -79,9 +79,9 @@ export default defineComponent({
   methods: {
     handleCalc() {
       const rectifierInputs = this.getInputs();
-      if (this.checkInputs()) return
+      if (this.checkInputs(rectifierInputs)) return
 
-      this.removeWarning(this.getInputs());
+      this.removeWarning(rectifierInputs);
       this.halfWaveResult = new HalfWave(
           Number(rectifierInputs[0].value),
           Number(rectifierInputs[1].value),
@@ -126,10 +126,9 @@ export default defineComponent({
 
       return [v1, n1, n2, diode, resistance, frequency, c];
     },
-    checkInputs(): boolean {
+    checkInputs(inputs: (HTMLInputElement | HTMLSelectElement)[]): boolean {
       let error = false;
-      const rectifierInputs = this.getInputs();
-      rectifierInputs.forEach(i => {
+      inputs.forEach(i => {
         if (i.classList.contains('rhw-diode') && (i.value === 'none' || !i.value)) {
           const html = '<p class="help is-danger">Campo obrigatório</p>';
           const select = document.querySelector('#rhw-select-diode') as HTMLDivElement;

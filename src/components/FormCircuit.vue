@@ -5,9 +5,9 @@
         Selecione o tipo de circuito
       </p>
       <p id="circuit-links" class="panel-tabs" @click="handleCircuitList">
-        <a class="is-active">Retificadores</a>
+        <a class="is-active">Todos</a>
+        <a>Retificadores</a>
         <a>Circuitos</a>
-        <a>Todos</a>
       </p>
       <!-- Search Bar -->
       <!--      <div class="panel-block">-->
@@ -32,16 +32,16 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import IImageComponent from "@/objects/IImageComponent";
-import {RectifierEnum} from "@/objects/CircuitEnum";
+import {CircuitEnum, RectifierEnum} from "@/objects/CircuitEnum";
 
 export default defineComponent({
   name: "FormCircuit",
   emits: ["imageComponent"],
   data() {
     return {
-      activeList: 'Retificadores',
-      circuits: ['Circuito 1', 'Circuito 2', 'Circuito 3'],
-      rectifiers: [RectifierEnum.HalfWave, 'Retificador 2', 'Retificador 3'],
+      activeList: 'Todos',
+      circuits: [CircuitEnum.CircuitWithSixResistances],
+      rectifiers: [RectifierEnum.HalfWave],
     }
   },
   computed: {
@@ -83,6 +83,9 @@ export default defineComponent({
       switch (title) {
         case RectifierEnum.HalfWave:
           image = "retificador.png";
+          break;
+        case CircuitEnum.CircuitWithSixResistances:
+          image = "circuit-with-six-resistencies.png";
           break;
         default:
           image = "640x480.png";

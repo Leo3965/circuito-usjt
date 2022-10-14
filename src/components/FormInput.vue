@@ -4,7 +4,8 @@
       <p class="title">Entradas do sistema</p>
       <p class="subtitle">Utilize a unidade de medida indicada nos campos</p>
       <div class="content">
-        <HalfWaveRectifier v-if="circuitName === getRectifierType" @HalfWaveResult="getResult" @clear="getClear"/>
+        <HalfWaveRectifier v-if="circuitName === hafWave" @HalfWaveResult="getResult" @clear="getClear"/>
+        <CircuitSixResistances v-if="circuitName === sixResistance" @result="getResult" @clear="getClear"/>
       </div>
     </div>
   </article>
@@ -12,22 +13,23 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import {RectifierEnum} from "@/objects/CircuitEnum";
+import {CircuitEnum, RectifierEnum} from "@/objects/CircuitEnum";
 import HalfWaveRectifier from "@/components/InputForms/HalfWaveRectifier.vue";
 import Result from "@/objects/Result";
+import CircuitSixResistances from "@/components/InputForms/CircuitSixResistances.vue";
 
 export default defineComponent({
   name: "FormInput",
+  data() {
+    return {
+      hafWave: RectifierEnum.HalfWave,
+      sixResistance: CircuitEnum.CircuitWithSixResistances
+    }
+  },
   emits: ["result", "clear"],
-  components: {HalfWaveRectifier},
+  components: {CircuitSixResistances, HalfWaveRectifier},
   props: {
     circuitName: {} as PropType<string>
-  },
-  computed: {
-    getRectifierType() : string {
-      if (this.circuitName === RectifierEnum.HalfWave) return RectifierEnum.HalfWave
-      return ''
-    }
   },
   methods: {
     getResult(result: Result) {
