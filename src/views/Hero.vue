@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-small">
+  <section class="hero is-medium is-dark">
     <div class="hero-body">
       <p class="title">
         Bem Vindo ao USJT Circuit

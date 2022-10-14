@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <img src="../assets/logo.png" width="112" height="28">
+      <a class="navbar-item" href="/">
+        <img alt="logo" src="../assets/logo.png" width="112" height="28">
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -14,33 +14,26 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-
-        <a class="navbar-item">
-          Documentation
-        </a>
+        <router-link to="/" class="navbar-item">
+          Início
+        </router-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            More
+            Mais
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
+            <router-link to="/about" class="navbar-item">
+              Sobre
+            </router-link>
+            <router-link to="/contact" class="navbar-item">
+              Contato
+            </router-link>
             <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
+            <router-link to="/issue" class="navbar-item">
+              Relatar um problema
+            </router-link>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <Header/>
-    <Hero/>
+    <RouterView></RouterView>
     <Circuit/>
     <Footer/>
   </div>
@@ -10,7 +10,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import Header from "@/components/Header.vue";
-import Hero from "@/components/Hero.vue";
+import Hero from "@/views/Hero.vue";
 import Circuit from "@/components/Circuit.vue";
 import Testimonials from "@/components/Testimonials.vue";
 import Footer from "@/components/Footer.vue";
