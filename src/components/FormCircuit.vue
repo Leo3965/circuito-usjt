@@ -10,12 +10,12 @@
         <a>Todos</a>
       </p>
       <!-- Search Bar -->
-<!--      <div class="panel-block">-->
-<!--        <p class="control has-icons-left">-->
-<!--          <input class="input is-info" type="text" placeholder="Search">-->
-<!--          <span class="icon is-left"><i class="fas fa-search" aria-hidden="true"></i></span>-->
-<!--        </p>-->
-<!--      </div>-->
+      <!--      <div class="panel-block">-->
+      <!--        <p class="control has-icons-left">-->
+      <!--          <input class="input is-info" type="text" placeholder="Procurar">-->
+      <!--          <span class="icon is-left"><i class="fas fa-search" aria-hidden="true"></i></span>-->
+      <!--        </p>-->
+      <!--      </div>-->
 
 
       <a @click="handleCircuit" class="panel-block is-active" v-for="circuit in getActiveList" :key="circuit">
@@ -32,6 +32,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import IImageComponent from "@/objects/IImageComponent";
+import {RectifierEnum} from "@/objects/CircuitEnum";
 
 export default defineComponent({
   name: "FormCircuit",
@@ -40,7 +41,7 @@ export default defineComponent({
     return {
       activeList: 'Retificadores',
       circuits: ['Circuito 1', 'Circuito 2', 'Circuito 3'],
-      rectifiers: ['Retificador de meia onda', 'Retificador 2', 'Retificador 3'],
+      rectifiers: [RectifierEnum.HalfWave, 'Retificador 2', 'Retificador 3'],
     }
   },
   computed: {
@@ -76,18 +77,18 @@ export default defineComponent({
       this.$emit("imageComponent", imageComponent);
     },
 
-    buildImageComponent(title: string)  {
+    buildImageComponent(title: string) {
       let image;
 
       switch (title) {
-        case "Retificador de meia onda":
+        case RectifierEnum.HalfWave:
           image = "retificador.png";
           break;
         default:
           image = "640x480.png";
       }
 
-      const ic : IImageComponent = {
+      const ic: IImageComponent = {
         title: title,
         imageName: image
       }

@@ -70,6 +70,7 @@ import HalfWave from "@/objects/HalfWave";
 
 export default defineComponent({
   name: "HalfWaveRectifier",
+  emits: ["HalfWaveResult", "clear"],
   data() {
     return {
       halfWaveResult: {} as HalfWave,
@@ -92,7 +93,7 @@ export default defineComponent({
       );
 
       const result = this.halfWaveResult.calcRectifier();
-      console.log(result);
+      this.$emit('HalfWaveResult', result);
     },
     handleClear() {
       const rectifierInputs = this.getInputs();
@@ -104,6 +105,7 @@ export default defineComponent({
           e.value = ''
         }
       });
+      this.$emit('clear', true);
     },
     removeWarning(inputs: (HTMLInputElement | HTMLSelectElement)[]) {
       const errorMsg = document.querySelector('.help') as HTMLParagraphElement;

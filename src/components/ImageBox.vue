@@ -1,9 +1,9 @@
 <template>
-  <article class="tile is-child notification">
+  <article v-if="imageComponent.imageName" class="tile is-child notification">
     <p class="title">{{ imageComponent.title }}</p>
     <p class="subtitle">Esquema do circuito:</p>
     <figure class="image is-4by3">
-      <img height="640px" width="480px" :src="getImage">
+      <img alt="Circuit image" height="640px" width="480px" :src="getImage">
     </figure>
   </article>
 </template>

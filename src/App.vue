@@ -1,9 +1,10 @@
 <template>
-  <Header/>
-  <Hero/>
-  <Circuit/>
-  <Testimonials/>
-  <Footer/>
+  <div class="app-container">
+    <Header/>
+    <Hero/>
+    <Circuit/>
+    <Footer/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,4 +32,10 @@ export default defineComponent({
 </script>
 
 <style>
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 </style>

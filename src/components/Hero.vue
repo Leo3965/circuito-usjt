@@ -2,10 +2,10 @@
   <section class="hero is-small">
     <div class="hero-body">
       <p class="title">
-        Nam molestie ullamcorper nibh
+        Bem Vindo ao USJT Circuit
       </p>
       <p class="subtitle">
-        c tincidunt neque varius at. Integer porta eu metus vitae consectetur.
+        Sua A1/A2 nunca esteve tão fácil!
       </p>
     </div>
   </section>
