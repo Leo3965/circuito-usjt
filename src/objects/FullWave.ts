@@ -18,9 +18,9 @@ constructor (v1: number, n1: number, n2: number, diode: string, rl: number, f1: 
     this.n1 = n1;
     this.n2 = n2;
     if (diode == `silicon`) {
-        this.diode = Diode.silicon
+        this.diode = Diode.silicon;
     }else{
-        this.diode = Diode.bronio;
+        this.diode = Diode.germanio;
     }
     this.rl = rl;
     this.f1 = f1;
