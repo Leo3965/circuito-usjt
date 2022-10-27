@@ -27,7 +27,7 @@
         <select id="rhw-diode" class="rhw-diode">
           <option value="none" selected disabled hidden>Selecione um diodo</option>
           <option value="silicon">Silicio</option>
-          <option value="bronio">Bronio</option>
+          <option value="germanio">Germânio</option>
         </select>
       </div>
     </div>

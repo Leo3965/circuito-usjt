@@ -2,7 +2,7 @@ import Result, {Value} from "@/objects/Result";
 
 export enum Diode {
     silicon = 0.7,
-    bronio = 0.3
+    germanio = 0.3
 }
 
 export default class HalfWave {
@@ -22,7 +22,7 @@ export default class HalfWave {
         if (diode === 'silicon') {
             this.diode = Diode.silicon;
         } else {
-            this.diode = Diode.bronio;
+            this.diode = Diode.germanio;
         }
         this.rl = rl;
         this.f1 = f1;

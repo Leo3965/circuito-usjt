@@ -4,7 +4,7 @@
       <p class="title">Entradas do sistema</p>
       <p class="subtitle">Utilize a unidade de medida indicada nos campos</p>
       <div class="content">
-        <HalfWaveRectifier v-if="circuitName === hafWave" @HalfWaveResult="getResult" @clear="getClear"/>
+        <HalfWaveRectifier v-if="circuitName === center" @HalfWaveResult="getResult" @clear="getClear"/>
         <CircuitSixResistances v-if="circuitName === sixResistance" @result="getResult" @clear="getClear"/>
       </div>
     </div>
@@ -23,6 +23,7 @@ export default defineComponent({
   data() {
     return {
       hafWave: RectifierEnum.HalfWave,
+      center: RectifierEnum.CenterTape,
       sixResistance: CircuitEnum.CircuitWithSixResistances
     }
   },

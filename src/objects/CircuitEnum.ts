@@ -3,5 +3,6 @@ export enum CircuitEnum {
 }
 
 export enum RectifierEnum {
-    HalfWave = 'Retificador de meia onda'
+    HalfWave = 'Retificador de meia onda',
+    CenterTape = 'Retificador com CenterTape'
 }

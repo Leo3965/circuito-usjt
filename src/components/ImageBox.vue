@@ -1,7 +1,9 @@
 <template>
   <article v-if="imageComponent.imageName" class="tile is-child notification">
     <p class="title">{{ imageComponent.title }}</p>
-    <p class="subtitle">Esquema do circuito:</p>
+    <div class="content">
+      <blockquote v-if="imageComponent.content">{{ imageComponent.content }}</blockquote>
+    </div>
     <figure class="image is-4by3">
       <img alt="Circuit image" height="640px" width="480px" :src="getImage">
     </figure>
