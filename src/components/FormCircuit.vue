@@ -32,7 +32,8 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import IImageComponent from "@/objects/IImageComponent";
-import {CircuitEnum, RectifierEnum} from "@/objects/CircuitEnum";
+import {CircuitEnum} from "@/objects/CircuitEnum";
+import {RectifierEnum} from "@/objects/RectifierEnum";
 
 export default defineComponent({
   name: "FormCircuit",
@@ -96,13 +97,11 @@ export default defineComponent({
           content = "";
       }
 
-      const ic: IImageComponent = {
+      return {
         title: title,
         imageName: image,
         content: content
-      }
-
-      return ic;
+      } as IImageComponent;
     }
   }
 })

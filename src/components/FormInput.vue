@@ -13,10 +13,11 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import {CircuitEnum, RectifierEnum} from "@/objects/CircuitEnum";
+import {CircuitEnum} from "@/objects/CircuitEnum";
 import CenterTapeRectifier from "@/components/InputForms/CenterTapeRectifier.vue";
 import Result from "@/objects/Result";
 import CircuitSixResistances from "@/components/InputForms/CircuitSixResistances.vue";
+import {RectifierEnum} from "@/objects/RectifierEnum";
 
 export default defineComponent({
   name: "FormInput",
