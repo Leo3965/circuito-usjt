@@ -1,11 +1,7 @@
 import Result, {Value} from "@/objects/Result";
+import {Diode} from "@/objects/DiodeEnum";
 
-export enum Diode {
-    silicon = 0.7,
-    germanio = 0.3
-}
-
-export default class HalfWave {
+export default class CenterTape {
     v1: number;
     n1: number;
     n2: number;

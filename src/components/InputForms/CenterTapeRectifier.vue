@@ -66,14 +66,14 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import HalfWave from "@/objects/HalfWave";
+import CenterTape from "@/objects/CenterTape";
 
 export default defineComponent({
-  name: "HalfWaveRectifier",
-  emits: ["HalfWaveResult", "clear"],
+  name: "CenterTapeRectifier",
+  emits: ["CenterTapeResult", "clear"],
   data() {
     return {
-      halfWaveResult: {} as HalfWave,
+      CenterTapeResult: {} as CenterTape,
     }
   },
   methods: {
@@ -82,7 +82,7 @@ export default defineComponent({
       if (this.checkInputs(rectifierInputs)) return
 
       this.removeWarning(rectifierInputs);
-      this.halfWaveResult = new HalfWave(
+      this.CenterTapeResult = new CenterTape(
           Number(rectifierInputs[0].value),
           Number(rectifierInputs[1].value),
           Number(rectifierInputs[2].value),
@@ -92,8 +92,8 @@ export default defineComponent({
           Number(rectifierInputs[6].value),
       );
 
-      const result = this.halfWaveResult.calcRectifier();
-      this.$emit('HalfWaveResult', result);
+      const result = this.CenterTapeResult.calcRectifier();
+      this.$emit('CenterTapeResult', result);
     },
     handleClear() {
       const rectifierInputs = this.getInputs();
