@@ -1,32 +1,29 @@
+import Rectifier from "@/objects/Rectifier";
+import {Diode} from "@/objects/DiodeEnum";
 import Result, {Value} from "@/objects/Result";
 
-export enum Diode {
-    silicon = 0.7,
-    bronio = 0.3
-}
-
-export default class HalfWave {
-    v1: number;
+export default class RectifierAbstract implements Rectifier {
+    c: number;
+    diode: Diode;
+    f1: number;
     n1: number;
     n2: number;
-    diode: Diode;
     rl: number;
-    f1: number;
-    c: number;
+    v1: number;
 
-
-    constructor(v1: number, n1: number, n2: number, diode: string, rl: number, f1: number, c: number) {
-        this.v1 = v1;
+    constructor(c: number, diode: string, f1: number, n1: number, n2: number, rl: number, v1: number) {
+        this.c = c;
+        this.f1 = f1;
         this.n1 = n1;
         this.n2 = n2;
+        this.rl = rl;
+        this.v1 = v1;
+
         if (diode === 'silicon') {
             this.diode = Diode.silicon;
         } else {
-            this.diode = Diode.bronio;
+            this.diode = Diode.germanio;
         }
-        this.rl = rl;
-        this.f1 = f1;
-        this.c = c / 1_000_000;
     }
 
     // 1# STEP: Determinar tensão eficaz no secundário
@@ -50,7 +47,7 @@ export default class HalfWave {
     }
 
     // 5# STEP: Tensão Média
-    getMediumVoltage = function (vmax: number, vmin: number) {
+    getMediumVoltage(vmax: number, vmin: number) {
         return (vmax + vmin) / 2;
     }
 
@@ -67,14 +64,14 @@ export default class HalfWave {
 
         // Montando retorno
         const result = new Result();
-        result.addValue(new Value('f2', String(f2), 'Frequência do secundário', 'Hz'));
-        result.addValue(new Value('v2', String(v2), 'Tensão Eficaz no secundário', 'V'));
-        result.addValue(new Value('v2Peak', String(v2Peak), 'Tensão de pico no secundário', 'V'));
-        result.addValue(new Value('vcp', String(vcp), 'Tensão de pico no capacitor', 'V'));
-        result.addValue(new Value('von', String(von), 'Tensão Ripple', 'V'));
-        result.addValue(new Value('vmáx', String(vmax), 'Tensão Máxima', 'V'));
-        result.addValue(new Value('vmín', String(vmin), 'Tensão Mínima', 'V'));
-        result.addValue(new Value('vméd', String(vmed), 'Tensão Média', 'V'));
+        result.addValue(new Value('F2', String(f2), 'Frequência do secundário', 'Hz'));
+        result.addValue(new Value('V2', String(v2), 'Tensão Eficaz no secundário', 'V'));
+        result.addValue(new Value('V2Peak', String(v2Peak), 'Tensão de pico no secundário', 'V'));
+        result.addValue(new Value('Vcp', String(vcp), 'Tensão de pico no capacitor', 'V'));
+        result.addValue(new Value('Von', String(von), 'Tensão Ripple', 'V'));
+        result.addValue(new Value('Vmáx', String(vmax), 'Tensão Máxima', 'V'));
+        result.addValue(new Value('Vmín', String(vmin), 'Tensão Mínima', 'V'));
+        result.addValue(new Value('Vméd', String(vmed), 'Tensão Média', 'V'));
 
         return result;
     }

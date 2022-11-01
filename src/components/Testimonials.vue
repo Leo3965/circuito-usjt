@@ -13,7 +13,7 @@
             <p>
               <strong>Felipe</strong> <small>@fe</small> <small>31m</small>
               <br>
-              O Léo é o melhor!
+              Obrigado por ter me ajudado a fazer isso pessoal.
             </p>
           </div>
           <nav class="level is-mobile">
@@ -49,7 +49,7 @@
             <p>
               <strong>Natália</strong> <small>@na</small> <small>31m</small>
               <br>
-              Ainda bem que o Léo é do meu grupo!
+              Ficou muito bom!
             </p>
           </div>
           <nav class="level is-mobile">
@@ -85,7 +85,7 @@
             <p>
               <strong>Thomas</strong> <small>@thomas</small> <small>31m</small>
               <br>
-              O Léo é brabo!
+              Que ideia genial Felipe!!
             </p>
           </div>
           <nav class="level is-mobile">
@@ -122,7 +122,7 @@
             <p>
               <strong>Renan</strong> <small>@renan</small> <small>31m</small>
               <br>
-              Caramba, Léo..... GG mano!
+              Caramba, top mano!
             </p>
           </div>
           <nav class="level is-mobile">
@@ -158,7 +158,7 @@
             <p>
               <strong>Léo Freitas</strong> <small>@leonardo.freiitas</small> <small>31m</small>
               <br>
-              Melhor simulador que já vi, na vida!
+              Eu fiz a minha parte so pra agradar o Felipe!!!
             </p>
           </div>
           <nav class="level is-mobile">

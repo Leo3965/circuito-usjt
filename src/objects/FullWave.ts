@@ -1,31 +1,11 @@
 import Result, {Value} from "@/objects/Result";
 
-import {Diode} from './HalfWave'
 
+import RectifierAbstract from "./RectifierAbstract";
+import {Diode} from "@/objects/DiodeEnum";
 
-export default class FullWave {
+export default class FullWave extends RectifierAbstract {
 
-v1: number;
-n1: number;
-n2: number;
-diode: Diode;
-rl: number;
-f1: number;
-c: number;
-
-constructor (v1: number, n1: number, n2: number, diode: string, rl: number, f1: number, c: number){
-    this.v1 = v1;
-    this.n1 = n1;
-    this.n2 = n2;
-    if (diode == `silicon`) {
-        this.diode = Diode.silicon
-    }else{
-        this.diode = Diode.bronio;
-    }
-    this.rl = rl;
-    this.f1 = f1;
-    this.c = c / 1_000_000;
-}
 
  // 1# STEP: Determinar tensão eficaz no secundário
  getSecondaryVoltage() {
@@ -36,8 +16,8 @@ getSecondaryPeakVoltage(v2: number) {
     return Number((Math.pow(2, 1 / 2) * v2).toFixed(3));
 }
   // 3# STEP: Tensão de pico no capacitor (Vcp), "multiplicando o diodo por 2"
-  getCapacitorPeakVoltage(v2p: number, diode: Diode) {
-    return Number((v2p / 2 - (2*diode)).toFixed(3));
+ override getCapacitorPeakVoltage(v2p: number, diode: Diode) {
+    return Number((v2p - (2*diode)).toFixed(3));
 }
  
 // 4# STEP: Tensão Ripple (Von)
