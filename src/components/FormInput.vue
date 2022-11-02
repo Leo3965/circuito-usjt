@@ -6,6 +6,8 @@
       <div class="content">
         <CenterTapeRectifier v-if="circuitName === center" @CenterTapeResult="getResult" @clear="getClear"/>
         <CircuitSixResistances v-if="circuitName === sixResistance" @result="getResult" @clear="getClear"/>
+        <FullWaveRectifier v-if="circuitName === fullWave" @result="getResult" @clear="getClear"/>
+       
       </div>
     </div>
   </article>
@@ -18,6 +20,7 @@ import CenterTapeRectifier from "@/components/InputForms/CenterTapeRectifier.vue
 import Result from "@/objects/Result";
 import CircuitSixResistances from "@/components/InputForms/CircuitSixResistances.vue";
 import {RectifierEnum} from "@/objects/RectifierEnum";
+import FullWaveRectifier from "./InputForms/FullWaveRectifier.vue";
 
 export default defineComponent({
   name: "FormInput",
@@ -25,11 +28,12 @@ export default defineComponent({
     return {
       hafWave: RectifierEnum.HalfWave,
       center: RectifierEnum.CenterTape,
-      sixResistance: CircuitEnum.CircuitWithSixResistances
+      sixResistance: CircuitEnum.CircuitWithSixResistances,
+      fullWave: RectifierEnum.FullWave
     }
   },
   emits: ["result", "clear"],
-  components: {CircuitSixResistances, CenterTapeRectifier},
+  components: { CircuitSixResistances, CenterTapeRectifier, FullWaveRectifier },
   props: {
     circuitName: {} as PropType<string>
   },
