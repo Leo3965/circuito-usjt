@@ -42,7 +42,7 @@ export default defineComponent({
     return {
       activeList: 'Todos',
       circuits: [CircuitEnum.CircuitWithSixResistances],
-      rectifiers: [RectifierEnum.CenterTape],
+      rectifiers: [RectifierEnum.CenterTape,RectifierEnum.FullWave],
     }
   },
   computed: {
@@ -87,6 +87,11 @@ export default defineComponent({
           image = "retificador.png";
           content = "Retificador de onda completa com Center Tape é o retificador que utiliza dois diodos e uma conexão no transformador denominada Center Tape, quando passa uma corrente alternada, gera-se uma diferença de potencial no transformador e no Center Tape, que varia conforme a tensão muda entre positiva e negativa, em conjunto ao funcionamento do diodo que só permite a passagem de corrente em um único sentido, esse retificador retifica tanto a parte positiva, quanto a parte negativa da onda, aproveitando toda a onda.\n" +
               "Como o potencial entre as pontas do transformador e o Center Tape é a metade do potencial total, a tenção que chega na carga corresponde à metade da tensão total."
+          break;
+          case RectifierEnum.FullWave:
+          image = "Retificador_FullWave.jpg";
+          content = "Retificador de onda completa é o retificador que utiliza uma ponte de diodos, quando passa uma corrente alternada, gera-se uma diferença de potencial no transformador, que varia conforme a tensão muda entre positiva e negativa, em conjunto ao funcionamento do diodo que só permite a passagem de corrente em um único sentido, esse retificador retifica tanto a parte positiva, quanto a parte negativa da onda, aproveitando toda a onda.\n" +
+              ""
           break;
         case CircuitEnum.CircuitWithSixResistances:
           image = "circuit-with-six-resistencies.png";
