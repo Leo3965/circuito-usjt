@@ -1,6 +1,6 @@
-import Rectifier from "@/objects/Rectifier";
-import {Diode} from "@/objects/DiodeEnum";
-import Result, {Value} from "@/objects/Result";
+import Rectifier from "@/objects/model/Rectifier";
+import {Diode} from "@/objects/enum/DiodeEnum";
+import Result, {Value} from "@/objects/model/Result";
 
 export default class RectifierAbstract implements Rectifier {
     c: number;

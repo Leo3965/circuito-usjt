@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import IImageComponent from "@/objects/IImageComponent";
+import IImageComponent from "@/objects/interface/IImageComponent";
 
 export default defineComponent({
   name: "ImageBox",

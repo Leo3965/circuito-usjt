@@ -66,7 +66,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import CenterTape from "@/objects/CenterTape";
+import CenterTape from "@/objects/model/CenterTape";
 
 export default defineComponent({
   name: "CenterTapeRectifier",

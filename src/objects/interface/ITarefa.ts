@@ -1,4 +1,4 @@
-import IProjeto from "@/objects/IProjeto";
+import IProjeto from "@/objects/interface/IProjeto";
 
 export default interface ITarefa {
     duracaoEmSegundos: number;

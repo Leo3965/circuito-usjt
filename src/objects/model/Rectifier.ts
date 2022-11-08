@@ -1,5 +1,5 @@
-import {Diode} from "@/objects/DiodeEnum";
-import Result from "@/objects/Result";
+import {Diode} from "@/objects/enum/DiodeEnum";
+import Result from "@/objects/model/Result";
 
 export default interface Rectifier {
     v1: number;

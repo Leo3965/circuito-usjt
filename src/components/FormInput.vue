@@ -6,6 +6,8 @@
       <div class="content">
         <CenterTapeRectifier v-if="circuitName === center" @CenterTapeResult="getResult" @clear="getClear"/>
         <CircuitSixResistances v-if="circuitName === sixResistance" @result="getResult" @clear="getClear"/>
+        <HalfWaveRectifier v-if="circuitName === hafWave" @HalfWaveResult="getResult" @clear="getClear"/>
+        <FullWaveRectifier v-if="circuitName === fullWave" @FullWaveRectifierResult="getResult" @clear="getClear"/>
       </div>
     </div>
   </article>
@@ -13,23 +15,26 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import {CircuitEnum} from "@/objects/CircuitEnum";
+import {CircuitEnum} from "@/objects/enum/CircuitEnum";
+import {RectifierEnum} from "@/objects/enum/RectifierEnum";
+import Result from "@/objects/model/Result";
 import CenterTapeRectifier from "@/components/InputForms/CenterTapeRectifier.vue";
-import Result from "@/objects/Result";
 import CircuitSixResistances from "@/components/InputForms/CircuitSixResistances.vue";
-import {RectifierEnum} from "@/objects/RectifierEnum";
+import HalfWaveRectifier from "@/components/InputForms/HalfWaveRectifier.vue";
+import FullWaveRectifier from "@/components/InputForms/FullWaveRectifier.vue";
 
 export default defineComponent({
   name: "FormInput",
   data() {
     return {
+      fullWave: RectifierEnum.FullWave,
       hafWave: RectifierEnum.HalfWave,
       center: RectifierEnum.CenterTape,
       sixResistance: CircuitEnum.CircuitWithSixResistances
     }
   },
   emits: ["result", "clear"],
-  components: {CircuitSixResistances, CenterTapeRectifier},
+  components: {FullWaveRectifier, HalfWaveRectifier, CircuitSixResistances, CenterTapeRectifier},
   props: {
     circuitName: {} as PropType<string>
   },

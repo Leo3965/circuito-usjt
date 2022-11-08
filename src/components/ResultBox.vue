@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue";
-import Result from "@/objects/Result";
+import Result from "@/objects/model/Result";
 
 export default defineComponent({
   name: "ResultBox",

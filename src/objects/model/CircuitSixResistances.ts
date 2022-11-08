@@ -1,4 +1,4 @@
-import Result, {Value} from "@/objects/Result";
+import Result, {Value} from "@/objects/model/Result";
 
 export default class CircuitSixResistances {
     fm1: number;

@@ -27,10 +27,10 @@
 import {defineComponent} from 'vue'
 import FormCircuit from "@/components/FormCircuit.vue";
 import ImageBox from "@/components/ImageBox.vue";
-import IImageComponent from "@/objects/IImageComponent";
+import IImageComponent from "@/objects/interface/IImageComponent";
 import FormInput from "@/components/FormInput.vue";
 import ResultBox from "@/components/ResultBox.vue";
-import Result from "@/objects/Result";
+import Result from "@/objects/model/Result";
 
 export default defineComponent({
   name: "Circuit",

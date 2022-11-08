@@ -67,7 +67,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import CircuitSixResistances from "@/objects/CircuitSixResistances";
+import CircuitSixResistances from "@/objects/model/CircuitSixResistances";
 
 export default defineComponent({
   name: "CircuitSixResistances",
