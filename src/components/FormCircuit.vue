@@ -5,9 +5,10 @@
         Selecione o tipo de circuito
       </p>
       <p id="circuit-links" class="panel-tabs" @click="handleCircuitList">
-        <a class="is-active">Todos</a>
-        <a>Retificadores</a>
+        <a class="is-active">Retificadores</a>
         <a>Circuitos</a>
+        <a>Portas Lógicas</a>
+        <a>Todos</a>
       </p>
       <!-- Search Bar -->
       <!--      <div class="panel-block">-->
@@ -34,26 +35,30 @@ import {defineComponent} from 'vue'
 import IImageComponent from "@/objects/interface/IImageComponent";
 import {CircuitEnum} from "@/objects/enum/CircuitEnum";
 import {RectifierEnum} from "@/objects/enum/RectifierEnum";
+import {GateEnum} from "@/objects/enum/GateEnum";
 
 export default defineComponent({
   name: "FormCircuit",
   emits: ["imageComponent"],
   data() {
     return {
-      activeList: 'Todos',
+      activeList: 'Retificadores',
       circuits: [CircuitEnum.CircuitWithSixResistances],
       rectifiers: [RectifierEnum.CenterTape, RectifierEnum.HalfWave, RectifierEnum.FullWave],
+      gates: [GateEnum.NOT, GateEnum.AND, GateEnum.OR, GateEnum.NAND, GateEnum.NOR, GateEnum.XOR, GateEnum.NXOR]
     }
   },
   computed: {
     getActiveList(): string[] {
       switch (this.activeList) {
         case 'Todos':
-          return [...this.circuits, ...this.rectifiers];
+          return [...this.circuits, ...this.rectifiers, ...this.gates];
         case 'Retificadores':
           return this.rectifiers;
         case 'Circuitos':
           return this.circuits;
+        case 'Portas Lógicas':
+          return this.gates;
         default:
           return [];
       }
@@ -89,14 +94,14 @@ export default defineComponent({
           break;
 
         case RectifierEnum.FullWave:
-          image = "FullWave.jpg";
+          image = "full-wave.png";
           content = "Retificador de ponte é o retificador que utiliza 4 diodos conectados de tal forma que faz com que a corrente passe sempre no mesmo sentido na carga.\n" +
               "O arranjo de diodos é feito da seguinte maneira, em cada ponta do transformador é conectado 2 diodos, sendo um ligado pelo anodo e o outro pelo catodo, já na " +
               "carga, em uma extremidade é conectada a dois diodos sendo ambos catodos e na outra extremidade ambos anodos, como mostra a figura.";
           break;
 
         case RectifierEnum.CenterTape:
-          image = "retificador.png";
+          image = "center-tape.png";
           content = "Retificador de onda completa com Center Tape é o retificador que utiliza dois diodos e uma conexão no transformador denominada Center Tape, quando passa uma corrente alternada, " +
               "gera-se uma diferença de potencial no transformador e no Center Tape, que varia conforme a tensão muda entre positiva e negativa, em conjunto ao funcionamento do diodo que só permite a " +
               "passagem de corrente em um único sentido, esse retificador retifica tanto a parte positiva, quanto a parte negativa da onda, aproveitando toda a onda.\n" +
@@ -104,9 +109,44 @@ export default defineComponent({
           break;
 
         case RectifierEnum.HalfWave:
-          image = "640x480.png";
+          image = "half-wave.png";
           content = "Retificador de meia onda é o retificador que funciona a partir de um único diodo, que permite a passagem da corrente em apenas um sentido. \n" +
               "Este retificador aproveita apenas uma das partes da onda de tensão, ou a positiva, ou a negativa.";
+          break;
+
+        case GateEnum.NOT:
+          image = "NOT.png";
+          content = "";
+          break;
+
+        case GateEnum.AND:
+          image = "AND.png";
+          content = "";
+          break;
+
+        case GateEnum.OR:
+          image = "OR.png";
+          content = "";
+          break;
+
+        case GateEnum.NAND:
+          image = "NAND.png";
+          content = "";
+          break;
+
+        case GateEnum.NOR:
+          image = "NOR.png";
+          content = "";
+          break;
+
+        case GateEnum.XOR:
+          image = "XOR.png";
+          content = "";
+          break;
+
+        case GateEnum.NXOR:
+          image = "NXOR.png";
+          content = "";
           break;
 
         default:

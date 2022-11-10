@@ -5,12 +5,16 @@
 
         <div class="tile">
           <div class="tile is-parent is-vertical">
+
             <FormCircuit @imageComponent="getImageComponent"/>
+
             <ImageBox :image-component="imageComponent"/>
           </div>
 
+
           <div class="tile is-parent">
-            <FormInput :circuit-name="imageComponent.title" @result="getResult" @clear="getClear"/>
+            <FormInput v-if="imageComponent.title" :circuit-name="imageComponent.title" @result="getResult"
+                       @clear="getClear"/>
           </div>
         </div>
 
@@ -37,7 +41,7 @@ export default defineComponent({
   data() {
     return {
       imageComponent: {
-        title: "Imagem Do Circuito",
+        title: "",
         imageName: "",
       } as IImageComponent,
       result: {} as Result
