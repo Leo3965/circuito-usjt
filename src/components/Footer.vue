@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>USJT Circuit</strong> by <a>Léo Freitas </a> and <a>Felipe Rocha</a>.
+        <strong>USJT Circuit</strong> by <a>Léo Freitas </a>
       </p>
     </div>
   </footer>
