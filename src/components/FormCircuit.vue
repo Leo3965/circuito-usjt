@@ -86,10 +86,11 @@ export default defineComponent({
     buildImageComponent(title: string): IImageComponent {
       let image;
       let content;
+      let isGate = false;
 
       switch (title) {
         case CircuitEnum.CircuitWithSixResistances:
-          image = "circuit-with-six-resistencies.png";
+          image = "circuito.png";
           content = "";
           break;
 
@@ -117,36 +118,43 @@ export default defineComponent({
         case GateEnum.NOT:
           image = "NOT.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.AND:
           image = "AND.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.OR:
           image = "OR.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.NAND:
           image = "NAND.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.NOR:
           image = "NOR.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.XOR:
           image = "XOR.png";
           content = "";
+          isGate = true;
           break;
 
         case GateEnum.NXOR:
           image = "NXOR.png";
           content = "";
+          isGate = true;
           break;
 
         default:
@@ -157,7 +165,8 @@ export default defineComponent({
       return {
         title: title,
         imageName: image,
-        content: content
+        content: content,
+        isGate: isGate
       } as IImageComponent;
     }
   }

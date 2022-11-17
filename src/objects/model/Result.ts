@@ -2,7 +2,8 @@ export class Value {
     property: string;
     value: string;
     description: string;
-    unit: string
+    unit: string;
+
 
     constructor(property: string, value: string, description: string, unit: string) {
         this.property = property;
@@ -10,9 +11,11 @@ export class Value {
         this.description = description;
         this.unit = unit;
     }
+
 }
 
 export default class Result {
+    private _title = '=)'
     private _values: Value[] = [];
 
     addValue(value: Value) {
@@ -25,5 +28,13 @@ export default class Result {
 
     set values(value: Value[]) {
         this._values = value;
+    }
+
+    get title(): string {
+        return this._title;
+    }
+
+    set title(value: string) {
+        this._title = value;
     }
 }
