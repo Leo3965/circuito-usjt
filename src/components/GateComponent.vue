@@ -82,8 +82,10 @@ export default defineComponent({
     calResult(e: Event): void {
       const result = new GateResult();
       result.title = 'Tabela Verdade';
+      let id;
 
-      const id = e.target?.id;
+      const target = e.target as HTMLInputElement;
+      if (target) id = target.id;
       if (id === 'a') this.inputA = !this.inputA
       if (id === 'b') this.inputB = !this.inputB
 
