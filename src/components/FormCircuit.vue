@@ -40,6 +40,9 @@ import {GateEnum} from "@/objects/enum/GateEnum";
 export default defineComponent({
   name: "FormCircuit",
   emits: ["imageComponent"],
+  props: {
+    clear: Function
+  },
   data() {
     return {
       activeList: 'Retificadores',
@@ -66,6 +69,7 @@ export default defineComponent({
   },
   methods: {
     handleCircuitList(event: Event) {
+      //this.clear();
       const link = event.target as HTMLAnchorElement;
       if (link.classList.contains('is-active')) return
 

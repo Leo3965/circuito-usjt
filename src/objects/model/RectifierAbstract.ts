@@ -12,7 +12,7 @@ export default class RectifierAbstract implements Rectifier {
     v1: number;
 
     constructor(c: number, diode: string, f1: number, n1: number, n2: number, rl: number, v1: number) {
-        this.c = c;
+        this.c = c / 1_000_000;
         this.f1 = f1;
         this.n1 = n1;
         this.n2 = n2;
@@ -28,7 +28,7 @@ export default class RectifierAbstract implements Rectifier {
 
     // 1# STEP: Determinar tensão eficaz no secundário
     getSecondaryVoltage() {
-        return this.v1 * this.n2 / this.n1;
+        return this.v1 * (this.n2 / this.n1);
     }
 
     // 2# STEP: Tensão de pico no secundário (V2p)
@@ -38,7 +38,7 @@ export default class RectifierAbstract implements Rectifier {
 
     // 3# STEP: Tensão de pico no capacitor (Vcp)
     getCapacitorPeakVoltage(v2p: number, diode: Diode) {
-        return Number((v2p / 2 - diode).toFixed(3));
+        return Number(((v2p / 2) - diode.valueOf()).toFixed(3));
     }
 
     // 4# STEP: Tensão Ripple (Von)

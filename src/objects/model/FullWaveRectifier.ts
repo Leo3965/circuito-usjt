@@ -16,7 +16,7 @@ export default class FullWaveRectifier {
         this.n2 = n2;
         this.f = f;
         this.r = r;
-        this.c = c;
+        this.c = c / 1_000_000;
 
         if (diode === 'silicon') {
             this.diode = Diode.silicon;
@@ -37,12 +37,13 @@ export default class FullWaveRectifier {
 
     // 3# - Tensão de pico n0 capacitor
     getLoadPickVoltage(v2p: number) {
-        return Number((v2p - (2 * this.diode)).toFixed(2)); // vpc
+        console.log(this.diode)
+        return Number((v2p - (2 * this.diode.valueOf())).toFixed(2)); // vpc
     }
 
     // 4# - Corrente média na carga
     getMediumCurrent(vpc: number) {
-        return Number((vpc / this.r).toFixed(2)); // im
+        return Number((vpc / this.r).toFixed(10)); // im
     }
 
     // 5# - Frequência no secundário
@@ -52,7 +53,7 @@ export default class FullWaveRectifier {
 
     // 6# - Tensão Ripple
     getRippleVoltage(im: number, f2: number) {
-        return Number((im / this.c * f2).toFixed(3)); // vor
+        return Number((im / (this.c * f2)).toFixed(3)); // vor
     }
 
     // 7# - Tensão Média
@@ -67,6 +68,8 @@ export default class FullWaveRectifier {
         const im = this.getMediumCurrent(vpc);
         const f2 = this.getSecundaryFrequency();
         const vor = this.getRippleVoltage(im, f2);
+        const vmax = (vpc).toFixed(2);
+        const vmin = (vpc - vor).toFixed(2);
         const vmed = this.getMediumVoltage(vpc, vor);
 
         // Montando retorno
@@ -75,8 +78,10 @@ export default class FullWaveRectifier {
         result.addValue(new Value('V2Peak', String(v2p), 'Tensão De Pico No Secundário', 'V'));
         result.addValue(new Value('Vpc', String(vpc), 'Tensão De Pico No Capacitor', 'V'));
         result.addValue(new Value('Im', String(im), 'Corrente Média No Sistema', 'A'));
-        result.addValue(new Value('Im', String(f2), 'Frequência no secundário', 'Htz'));
+        result.addValue(new Value('Im', String(f2), 'Frequência no secundário', 'Hz'));
         result.addValue(new Value('Vr', String(vor), 'Tensão de Ripple', 'V'));
+        result.addValue(new Value('Vmáx', vmax, 'Tensão Máxima', 'V'));
+        result.addValue(new Value('Vmin', vmin, 'Tensão Mínima', 'V'));
         result.addValue(new Value('Vméd', String(vmed), 'Tensão Média', 'V'));
 
         return result;
