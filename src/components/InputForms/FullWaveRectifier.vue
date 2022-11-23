@@ -31,7 +31,7 @@
     <label class="label">Tipo de Diodo</label>
     <div class="control">
       <div id="fwr-diode" class="select">
-        <select id="hwr-diode" class="rhw-diode">
+        <select id="sfwr-diode" class="rhw-diode">
           <option value="none" selected disabled hidden>Selecione um diodo</option>
           <option value="silicon">Silicio</option>
           <option value="germanio">Germânio</option>
@@ -100,12 +100,11 @@ export default defineComponent({
       const n1 = document.querySelector('#fwr-n1') as HTMLInputElement;
       const n2 = document.querySelector('#fwr-n2') as HTMLInputElement;
       const f = document.querySelector('#fwr-f') as HTMLInputElement;
-      const diode = document.querySelector('#fwr-diode') as HTMLSelectElement;
+      const diode = document.querySelector('#sfwr-diode') as HTMLSelectElement;
       const r = document.querySelector('#fwr-r') as HTMLInputElement;
       const c = document.querySelector('#fwr-c') as HTMLInputElement;
 
       return [v, n1, n2, f, diode, r, c];
-      // console.log([v, n1, n2, f, diode, r, c]);
     },
     checkInputs(inputs: (HTMLInputElement | HTMLSelectElement)[]): boolean {
       let error = false;
@@ -139,7 +138,7 @@ export default defineComponent({
       const rectifierInputs = this.getInputs();
       this.removeWarning(rectifierInputs);
       rectifierInputs.forEach(e => {
-        if (e.classList.contains('fwr-diode')) {
+        if (e.classList.contains('sfwr-diode')) {
           e.value = 'none'
         } else {
           e.value = ''

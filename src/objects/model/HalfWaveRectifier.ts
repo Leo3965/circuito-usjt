@@ -16,7 +16,7 @@ export default class HalfWaveRectifier {
         this.n2 = n2;
         this.f = f;
         this.r = r;
-        this.c = c;
+        this.c = c / 1_000_000;
 
         if (diode === 'silicon') {
             this.diode = Diode.silicon;
@@ -37,7 +37,7 @@ export default class HalfWaveRectifier {
 
     // 3# - Tensão de pico na carga
     getLoadPickVoltage(v2p: number) {
-        return Number((v2p - this.diode).toFixed(2)); // vpc
+        return Number((v2p - this.diode.valueOf()).toFixed(2)); // vpc
     }
 
     // 4# - Tensão eficaz na carga
@@ -47,12 +47,12 @@ export default class HalfWaveRectifier {
 
     // 5# - Corrente média na carga
     getMediumCurrent(vpc: number) {
-        return Number((vpc / this.r).toFixed(2)); // im
+        return Number((vpc / this.r).toFixed(10)); // im
     }
 
     // 6# - Tensão Ripple
     getRippleVoltage(im: number) {
-        return Number((im / this.c * this.f).toFixed(3)); // vor
+        return Number((im / ((this.c) * this.f)).toFixed(3)); // vor
     }
 
     // 7# - Tensão Média
